@@ -1,4 +1,4 @@
-call plug#begin('~/vimfiles/plugged')
+call plug#begin(~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-syntastic/syntastic'
@@ -7,7 +7,7 @@ Plug 'Julian/vim-textobj-variable-segment'
 Plug 'vim-airline/vim-airline'
 Plug 'PProvost/vim-ps1'
 Plug 'jeetsukumaran/vim-buffergator'
-call plug#end()
+call plug#end
 
 set number
 set ignorecase
@@ -90,6 +90,12 @@ nmap <leader>T :enew<CR>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 nmap <leader>w :bp <BAR> bd #<CR>
+
+" Unite stuff for fuzzy line search
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#source('file,file/new,buffer,file_rec,line', 'matchers', 'matcher_fuzzy')
+nnoremap <C-k> :<C-u>Unite -buffer-name=search -start-insert line<cr>
 
 run SyntasticEnable javascript
 
