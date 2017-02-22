@@ -1,12 +1,14 @@
 call plug#begin('~/vimfiles/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'aykamko/vim-easymotion-segments'
 Plug 'vim-syntastic/syntastic'
 Plug 'kana/vim-textobj-user'
 Plug 'Julian/vim-textobj-variable-segment'
 Plug 'vim-airline/vim-airline'
 Plug 'PProvost/vim-ps1'
 Plug 'jeetsukumaran/vim-buffergator'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 set number
@@ -14,9 +16,27 @@ set ignorecase
 set smartcase
 set backspace=indent,eol,start
 
+
 let mapleader="\<Space>"
 let g:ctrlp_cmd = 'CtrlP'
 nmap <leader>p :CtrlP<cr>
+
+nmap <leader>ev :edit d:\dev\vimrc\_vimrc<cr>
+nmap <C-H> <C-W><C-H>
+nmap <C-L> <C-W><C-L>
+nmap <C-Q> <C-W><C-Q>
+
+" BufferGator stuff
+let buffergator_viewport_split_policy = 'R'
+
+" NerdTree shortcuts
+let NERDTreeQuitOnOpen = 1
+let NERDTreeChDirMode = 2
+let NERDTreeWinPos = "right"
+let NERDTreeWinSize = 60
+
+" Shortcuts for toggling NERDTree
+nnoremap <Leader>nt :NERDTree<CR><C-w>h:NERDTreeFind<CR>
 
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
@@ -102,3 +122,4 @@ colo desert
 set guifont=Consolas:h11:cANSI
 set guioptions-=m
 set guioptions-=T
+set guioptions-=L
